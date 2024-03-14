@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+""" Module of Task 0
+"""
 
 
 def add(a: float, b: float) -> float:
@@ -8,6 +10,6 @@ def add(a: float, b: float) -> float:
     b: float
 
     Return:
-    sum: float
+    float: sum of two floats
     """
     return a + b
