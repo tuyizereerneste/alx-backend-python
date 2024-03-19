@@ -1,6 +1,6 @@
+#!/usr/bin/env python3
 """Module for task 0
 """
-
 
 import asyncio
 import random
