@@ -58,9 +58,9 @@ class TestGetJson(unittest.TestCase):
 
 
 class TestMemoize(unittest.TestCase):
-    """ Representation of TestMonize class
+    """Representation of TestMemoize class
     """
-    def test_memoize(self):
+    def test_memoize(self) -> None:
         class TestClass:
             def a_method(self):
                 return 42
@@ -68,14 +68,12 @@ class TestMemoize(unittest.TestCase):
             @memoize
             def a_property(self):
                 return self.a_method()
-        test_instance = TestClass()
         with patch.object(
                 TestClass,
-                'a_method',
-                return_value=lambda: 42) as mock_a_method:
-            test_instance = TestClass()
-            result1 = test_instance.a_property()
-            result2 = test_instance.a_property()
-            self.assertEqual(result1, 42)
-            self.assertEqual(result2, 42)
-            mock_a_method.assert_called_once()
+                "a_method",
+                return_value=lambda: 42,
+                ) as memo_fxn:
+            test_class = TestClass()
+            self.assertEqual(test_class.a_property(), 42)
+            self.assertEqual(test_class.a_property(), 42)
+            memo_fxn.assert_called_once()
